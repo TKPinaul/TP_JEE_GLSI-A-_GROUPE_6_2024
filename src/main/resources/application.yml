@@ -1,0 +1,6 @@
+# configuration des paramettres d'authentification
+spring:
+  security:
+    user:
+      name: TDA
+      password: connect
