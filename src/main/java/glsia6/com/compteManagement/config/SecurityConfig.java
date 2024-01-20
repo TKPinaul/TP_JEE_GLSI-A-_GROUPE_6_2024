@@ -1,3 +1,4 @@
+/*
 package glsia6.com.compteManagement.config;
 
 import org.springframework.context.annotation.Bean;
@@ -21,3 +22,4 @@ public class SecurityConfig {
         return httpSecur.build();
     }
 }
+*/

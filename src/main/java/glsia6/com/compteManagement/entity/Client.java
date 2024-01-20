@@ -1,5 +1,6 @@
 package glsia6.com.compteManagement.entity;
 
+import glsia6.com.compteManagement.enums.CompteStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,7 +22,7 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
-    private LocalDate dateNaissance;
+    private Date dateNaissance;
     private String sexe;
     private String adresse;
     private String telephone;

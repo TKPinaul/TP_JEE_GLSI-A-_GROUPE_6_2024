@@ -24,12 +24,12 @@ public class CompteController {
     }
 
     @GetMapping("/{id}")
-    public Compte getClient(@PathVariable int id){
+    public Compte getOneCompte(@PathVariable int id){
         return compteService.getOneCompte(id);
     }
 
     @PostMapping("/")
-    public Compte saveClient(@RequestBody Compte compte){
+    public Compte saveCompte(@RequestBody Compte compte){
         return compteService.saveCompte(compte);
     }
 
@@ -41,7 +41,6 @@ public class CompteController {
             existingCompte.setNumeroCompte(compteUpdated.getNumeroCompte());
             existingCompte.setTypeCompte(compteUpdated.getTypeCompte());
             existingCompte.setSolde(compteUpdated.getSolde());
-            existingCompte.setProprietaire(compteUpdated.getProprietaire());
             existingCompte.setDateCreation(compteUpdated.getDateCreation());
 
             compteService.saveCompte(existingCompte);
