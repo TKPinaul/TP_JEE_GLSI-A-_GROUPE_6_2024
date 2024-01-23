@@ -22,5 +22,6 @@ public class Transaction {
 
     @ManyToOne
     private Compte compte;
+    private String description;
 
 }

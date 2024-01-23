@@ -21,18 +21,16 @@ import java.util.List;
 
 public class Compte {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String typeCompte;
+    private String id;
     private String numeroCompte;
     private Date dateCreation;
-    private float solde;
-    private CompteStatus status;
+    private double solde;
+    private CompteStatus status; // etat
 
 
     @ManyToOne
     private  Client client;
-    @OneToMany(mappedBy = "compte")
+    @OneToMany(mappedBy = "compte",fetch = FetchType.LAZY)
     private List<Transaction> transactions;
 
 }

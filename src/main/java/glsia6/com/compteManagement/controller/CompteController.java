@@ -2,8 +2,10 @@ package glsia6.com.compteManagement.controller;
 
 import glsia6.com.compteManagement.entity.Client;
 import glsia6.com.compteManagement.entity.Compte;
+import glsia6.com.compteManagement.entity.CompteCourant;
 import glsia6.com.compteManagement.serviceImpl.ClientService;
 import glsia6.com.compteManagement.serviceImpl.CompteService;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,17 +25,18 @@ public class CompteController {
         return compteService.getAllComptes();
     }
 
+    /*@SneakyThrows
     @GetMapping("/{id}")
-    public Compte getOneCompte(@PathVariable int id){
-        return compteService.getOneCompte(id);
+    public Compte getOneCompte(@PathVariable String compteId){
+        return compteService.getOneCompte(compteId);
     }
 
     @PostMapping("/")
-    public Compte saveCompte(@RequestBody Compte compte){
-        return compteService.saveCompte(compte);
-    }
+    public CompteCourant saveCompteCourant(@RequestBody Compte compte){
+        return compteService.saveCompteCourant(saveCompteCourant(saveCompteCourant()));
+    }*/
 
-    @PutMapping("/{id}")
+    /*@PutMapping("/{id}")
     public ResponseEntity<String> updateCompte(@PathVariable int id, @RequestBody Compte compteUpdated){
         Compte existingCompte = compteService.getOneCompte(id);
         if (existingCompte!=null){
@@ -49,19 +52,19 @@ public class CompteController {
             return ResponseEntity.notFound().build();
         }
 
-    }
+    }*/
 
-    @DeleteMapping("/{id}")
+    /*@DeleteMapping("/{id}")
     public ResponseEntity<String> deleteClient(@PathVariable int id){
-        Compte existingCompte = compteService.getOneCompte(id);
+        Compte existingCompte = compteService.getOneCompte();
          if ( existingCompte!=null){
-             compteService.deleteCompte(id);
+             compteService.deleteCompte(compteId);
 
              return ResponseEntity.ok("This compte is deleted successfully");
         }else {
              return ResponseEntity.notFound().build();
          }
 
-    }
+    }*/
 
 }

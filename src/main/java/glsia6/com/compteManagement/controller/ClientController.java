@@ -1,6 +1,8 @@
 package glsia6.com.compteManagement.controller;
 
+import glsia6.com.compteManagement.dto.ClientDto;
 import glsia6.com.compteManagement.entity.Client;
+import glsia6.com.compteManagement.exception.ClientNotFoundException;
 import glsia6.com.compteManagement.serviceImpl.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,56 +18,33 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/")
-    public List<Client> getClients(){
+    public List<ClientDto> getClients(){
         return clientService.getAllCLients();
     }
 
     @GetMapping("/{id}")
-    public Client getClient(@PathVariable int id){
-        return clientService.getOneClient(id);
+    public ClientDto getClient(@PathVariable(name = "id") int clientId) throws ClientNotFoundException {
+
+        return clientService.getOneClient(clientId);
     }
 
     @PostMapping("/")
-    public Client saveClient(@RequestBody Client client){
-        return clientService.saveClient(client);
+    public ClientDto saveClient(@RequestBody ClientDto clientDto){
+
+        return clientService.saveClient(clientDto);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable int id, @RequestBody Client clientUpdated){
-        Client existingClient = clientService.getOneClient(id);
-
-        if (existingClient != null){
-
-            existingClient.setNom(clientUpdated.getNom());
-            existingClient.setAdresse(clientUpdated.getAdresse());
-            existingClient.setSexe(clientUpdated.getSexe());
-            existingClient.setCourriel(clientUpdated.getCourriel());
-            existingClient.setNationalite(clientUpdated.getNationalite());
-            existingClient.setTelephone(clientUpdated.getTelephone());
-            existingClient.setDateNaissance(clientUpdated.getDateNaissance());
-
-            clientService.saveClient(existingClient);
-
-            return ResponseEntity.ok(existingClient);
-        }else {
-            return ResponseEntity.notFound().build();
-        }
+    @PutMapping("/{clientId}")
+    public ClientDto updateClient(@PathVariable int clientId, @RequestBody ClientDto clientDto) throws ClientNotFoundException {
+        ClientDto existingClient = clientService.getOneClient(clientId);
+        clientDto.setId(clientId);
+        return clientService.updateClient(clientDto);
 
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteClient(@PathVariable int id){
-        //Optional<Client> existingClientOptional = Optional.ofNullable(clientService.getOneClient(id));
-        Client existingClient = clientService.getOneClient(id);
-        if (existingClient!=null){
+    @DeleteMapping("/{clientId}")
+    public  void deleteClient(@PathVariable int clientId) throws ClientNotFoundException {
 
-            clientService.deleteClient(id);
-
-            return ResponseEntity.ok("This client has been deleted successfully");
-
-        }else {
-            return ResponseEntity.notFound().build();
-        }
-
-    }
+        clientService.deleteClient(clientId);
+}
 }

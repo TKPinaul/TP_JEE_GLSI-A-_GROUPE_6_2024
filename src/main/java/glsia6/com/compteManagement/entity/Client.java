@@ -1,5 +1,6 @@
 package glsia6.com.compteManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import glsia6.com.compteManagement.enums.CompteStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,7 @@ public class Client {
     private String nationalite;
 
     @OneToMany(mappedBy = "client")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Compte> Comptes;
 }
 
