@@ -26,4 +26,6 @@ public class ClientMapperImpl {
         BeanUtils.copyProperties(clientDto,client);
         return client;
     };
+
+
 }
