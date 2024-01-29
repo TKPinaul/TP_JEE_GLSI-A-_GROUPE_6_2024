@@ -17,6 +17,7 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.Date;
 import java.util.List;
@@ -160,6 +161,13 @@ public class CompteService implements ICompteService {
         credit(compteIdSource, montant, "Virement recu depuis" + compteIdSource);
 
 
+    }
+    @PutMapping("/{compteId}")
+
+    @Override
+    public CompteCourantDto updateCompte(double initialSolde, double decouvert,String numeroCompte,int clientId) throws ClientNotFoundException {
+
+        return saveCompteCourant(initialSolde,decouvert,numeroCompte,clientId);
     }
 }
 

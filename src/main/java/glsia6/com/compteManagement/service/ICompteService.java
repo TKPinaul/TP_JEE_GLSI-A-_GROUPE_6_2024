@@ -27,6 +27,7 @@ public interface ICompteService {
     void credit(String compteId, double montant, String description) throws SoldeNotSufficientException, CompteNotFoundException;
 
     void transfer(String compteIdSource, String compteIdDestination, double montant) throws CompteNotFoundException, SoldeNotSufficientException;
+    CompteCourantDto updateCompte(double initialSolde, double decouvert,String numeroCompte, int clientId) throws ClientNotFoundException;
 
    // CompteCourantDto updateCompte(double Solde, double decouvert,double tautxInteret,String compteId) throws CompteNotFoundException;
 
