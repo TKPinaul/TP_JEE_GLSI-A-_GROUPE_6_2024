@@ -3,6 +3,7 @@ package glsia6.com.compteManagement.mappers;
 import glsia6.com.compteManagement.dto.ClientDto;
 import glsia6.com.compteManagement.entity.Client;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service

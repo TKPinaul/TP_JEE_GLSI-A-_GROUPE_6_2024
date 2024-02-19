@@ -15,6 +15,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "glsia6.com.compteManagement")
 public class CompteManagementApplication {
 
 	public static void main(String[] args) {

@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class CompteCourantDto extends CompteDto {
+
     private String id;
     private String numeroCompte;
     private double solde;
@@ -14,6 +15,5 @@ public class CompteCourantDto extends CompteDto {
     private Date dateCreation;
     private ClientDto clientDto;
     private double decouvert;
-
 
 }
